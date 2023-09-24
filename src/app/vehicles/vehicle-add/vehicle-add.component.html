@@ -1,0 +1,101 @@
+<div class="container-fluid">
+    <div class="card m-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6">
+                    <span *ngIf="userId">Update Vehicle</span> <span *ngIf="!userId">Add Vehicle</span>
+                </div>
+                <div class="col-md-6 text-end" *ngIf="!userId">
+                    <button class="btn btn-primary btn-sm" (click)="onClickAddNew()">Add New</button>
+                </div>
+            </div>
+            
+        </div>
+        <div class="card-body">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <label for="LICENSE">License Number : </label>
+                    <input type="text" class="form-control" [(ngModel)]="model.LICENSE" name="model.LICENSE" id="">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <label for="LICENSE">Vehicle Type : </label>
+                    <select type="text" class="form-control" [(ngModel)]="model.VEHICLE_TYPE" name="model.VEHICLE_TYPE"
+                        id="">
+                        <option value="">Select</option>
+                        <option *ngFor="let item of vehicleService?.vehicleList?.VEHICLE_TYPE" [value]="item?.value">
+                            {{item?.name}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <label for="LICENSE">Owner Name : </label>
+                    <input type="text" class="form-control" [(ngModel)]="model.VEHICLE_OWNER_NAME"
+                        name="model.VEHICLE_OWNER_NAME" id="">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <label for="LICENSE">Phone Number : </label>
+                    <input type="text" class="form-control" [(ngModel)]="model.VEHICLE_OWNER_PHONE"
+                        name="model.VEHICLE_OWNER_PHONE" id="">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <label for="LICENSE">Status : </label>
+                    <select class="form-control" [(ngModel)]="model.STATUS" name="model.STATUS" id="">
+
+                        <option value="">Select</option>
+                        <option *ngFor="let item of vehicleService?.vehicleList?.STATUS" [value]="item?.value">
+                            {{item?.name}}</option>
+                    </select>
+                   
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <label for="LICENSE">Address : </label>
+                    <input type="text" class="form-control" [(ngModel)]="model.ADDRESS" name="model.ADDRESS" id="">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <label for="LICENSE">Car Entry Date : </label>
+                    <input type="datetime-local" class="form-control" [(ngModel)]="model.CAR_ENTRY_DATE"
+                        name="model.CAR_ENTRY_DATE" id="">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <label for="LICENSE">Car Exit Date : </label>
+                    <input type="datetime-local" class="form-control" [(ngModel)]="model.CAR_EXIT_DATE" name="model.CAR_EXIT_DATE"
+                        id="">
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <label for="LICENSE">Parking Charge : </label>
+                    <select class="form-control" [(ngModel)]="model.PARKING_CHARGE"
+                    name="model.PARKING_CHARGE" id="">
+                    <option value="">Select</option>
+                    <option *ngFor="let item of vehicleService?.vehicleList?.PARKING_CHARGE" [value]="item?.value">
+                        {{item?.name}}</option>
+                </select>
+                   
+                </div>
+            </div>
+
+        </div>
+        <div class="card-footer">
+            <div class="col-12 text-end">
+                <button *ngIf="!userId" type="button" class="btn btn-primary btn-md" (click)="onClickSave()">Save</button>
+                <button *ngIf="userId" type="button" class="btn btn-primary btn-md" (click)="onClickUpdate()">Update</button>
+            </div>
+        </div>
+    </div>
+
+    
+</div>

@@ -1,0 +1,43 @@
+<div class="container-fluid">
+    <div class="card m-3">
+        <div class="card-header">
+            <div class="row">
+                <div class="col-md-6"> Vehicle List</div>
+                <div class="col-md-6 text-end">
+                    <a type="button" routerLink="/vehicle-add" class="btn btn-primary btn-sm">Add</a>
+                </div>
+            </div>
+           
+        </div>
+        <div class="card-body">
+            <table class="table table-striped">
+                <thead>
+                    <tr>                    
+                    <th>Owner Name</th>
+                    <th>Vehicle Type</th>
+                    <th>License No</th>
+                    <th>Entry Time</th>
+                    <th>Exit Time</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of listData; let i=index;">
+                        <td>{{item?.VEHICLE_OWNER_NAME}}</td>
+                        <td>{{item?.VEHICLE_TYPE=='t' ? 'Truck' : item?.VEHICLE_TYPE=='m' ? 'Microbus' : 'Car'}}</td>
+                        <td>{{item?.LICENSE}}</td>
+                        <td>{{item?.CAR_ENTRY_DATE}}</td>
+                        <td>{{item?.CAR_EXIT_DATE}}</td>
+                        <td>{{item?.STATUS == 'i' ? 'In' : 'Out'}}</td>
+                        <td>
+                            <button class="btn btn-secondary btn-sm" (click)="onClickEdit(i+1)">Edit</button>&nbsp;
+                            <button class="btn btn-danger btn-sm" (click)="onClickDelete(i)">delete</button>&nbsp;
+                        </td>
+                    </tr>
+                </tbody>
+              </table>
+        </div>
+        </div>
+        </div>
